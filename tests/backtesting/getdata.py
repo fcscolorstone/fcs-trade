@@ -2,9 +2,9 @@ from time import time
 
 import rqdatac as rq
 
-from vnpy.trader.object import BarData
-from vnpy.trader.constant import Exchange, Interval
-from vnpy.trader.database import database_manager
+from fcs_trade.trader.object import BarData
+from fcs_trade.trader.constant import Exchange, Interval
+from fcs_trade.trader.database import database_manager
 
 USERNAME = ""
 PASSWORD = ""

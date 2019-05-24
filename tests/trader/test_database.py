@@ -6,9 +6,9 @@ import unittest
 from copy import copy
 from datetime import datetime, timedelta
 
-from vnpy.trader.constant import Exchange, Interval
-from vnpy.trader.database.database import Driver
-from vnpy.trader.object import BarData, TickData
+from fcs_trade.trader.constant import Exchange, Interval
+from fcs_trade.trader.database.database import Driver
+from fcs_trade.trader.object import BarData, TickData
 
 os.environ["VNPY_TESTING"] = "1"
 
@@ -69,7 +69,7 @@ tick = TickData(
 class TestDatabase(unittest.TestCase):
 
     def connect(self, settings: dict):
-        from vnpy.trader.database.initialize import init  # noqa
+        from fcs_trade.trader.database.initialize import init  # noqa
 
         self.manager = init(settings)
 

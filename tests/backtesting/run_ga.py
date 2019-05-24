@@ -1,5 +1,5 @@
-from vnpy.app.cta_strategy.backtesting import BacktestingEngine, OptimizationSetting
-from vnpy.app.cta_strategy.strategies.atr_rsi_strategy import (
+from fcs_trade.app.cta_strategy.backtesting import BacktestingEngine, OptimizationSetting
+from fcs_trade.app.cta_strategy.strategies.atr_rsi_strategy import (
     AtrRsiStrategy,
 )
 from datetime import datetime

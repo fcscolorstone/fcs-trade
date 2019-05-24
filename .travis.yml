@@ -16,8 +16,8 @@ services:
   - postgresql
 
 before_script:
-  - psql -d postgresql://postgres:${VNPY_TEST_POSTGRESQL_PASSWORD}@localhost -c "create database vnpy;"
-  - mysql -u root --password=${VNPY_TEST_MYSQL_PASSWORD} -e 'CREATE DATABASE vnpy;'
+  - psql -d postgresql://postgres:${VNPY_TEST_POSTGRESQL_PASSWORD}@localhost -c "create database fcs_trade;"
+  - mysql -u root --password=${VNPY_TEST_MYSQL_PASSWORD} -e 'CREATE DATABASE fcs_trade;'
 
 script:
   - cd tests; source travis_env.sh;
@@ -48,7 +48,7 @@ matrix:
         # update pip & setuptools
         - python -m pip install --upgrade pip wheel setuptools
         # Linux install script
-        - python -m pip install https://pip.vnpy.com/colletion/ibapi-9.75.1-001-py3-none-any.whl
+        - python -m pip install https://pip.fcs_trade.com/colletion/ibapi-9.75.1-001-py3-none-any.whl
         - bash ./install.sh
 
     - name: "sdist install under Ubuntu: gcc-7"
@@ -75,7 +75,7 @@ matrix:
         - popd
         - python -m pip install numpy
         - python -m pip install --pre --extra-index-url https://rquser:ricequant99@py.ricequant.com/simple/ rqdatac
-        - python -m pip install https://pip.vnpy.com/colletion/ibapi-9.75.1-001-py3-none-any.whl
+        - python -m pip install https://pip.fcs_trade.com/colletion/ibapi-9.75.1-001-py3-none-any.whl
         - python setup.py sdist
         - python -m pip install dist/`ls dist`
 
@@ -85,7 +85,7 @@ matrix:
       services: []
       before_install: []
       install:
-        - python3 -m pip install https://pip.vnpy.com/colletion/ibapi-9.75.1-001-py3-none-any.whl
+        - python3 -m pip install https://pip.fcs_trade.com/colletion/ibapi-9.75.1-001-py3-none-any.whl
         - bash ./install_osx.sh
       before_script: []
       script:

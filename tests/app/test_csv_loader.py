@@ -4,8 +4,8 @@ Test if csv loader works fine
 import tempfile
 import unittest
 
-from vnpy.app.csv_loader import CsvLoaderEngine
-from vnpy.trader.constant import Exchange, Interval
+from fcs_trade.app.csv_loader import CsvLoaderEngine
+from fcs_trade.trader.constant import Exchange, Interval
 
 
 class TestCsvLoader(unittest.TestCase):

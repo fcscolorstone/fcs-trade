@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'vnpy'
+project = 'fcs_trade'
 copyright = '2019, vn.py Team'
 author = 'vn.py Team'
 
@@ -108,7 +108,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'vnpydoc'
+htmlhelp_basename = 'fcs_tradedoc'
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -134,7 +134,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'vnpy.tex', 'vnpy Documentation',
+    (master_doc, 'fcs_trade.tex', 'fcs_trade Documentation',
      'vn.py Team', 'manual'),
 ]
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'vnpy', 'vnpy Documentation',
+    (master_doc, 'fcs_trade', 'fcs_trade Documentation',
      [author], 1)
 ]
 
@@ -153,8 +153,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'vnpy', 'vnpy Documentation',
-     author, 'vnpy', 'One line description of project.',
+    (master_doc, 'fcs_trade', 'fcs_trade Documentation',
+     author, 'fcs_trade', 'One line description of project.',
      'Miscellaneous'),
 ]
 

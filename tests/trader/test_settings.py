@@ -3,7 +3,7 @@ Test if database works fine
 """
 import unittest
 
-from vnpy.trader.setting import SETTINGS, get_settings
+from fcs_trade.trader.setting import SETTINGS, get_settings
 
 
 class TestSettings(unittest.TestCase):

@@ -1,30 +1,30 @@
 
-from vnpy.event import EventEngine
+from fcs_trade.event import EventEngine
 
-from vnpy.trader.engine import MainEngine
-from vnpy.trader.ui import MainWindow, create_qapp
+from fcs_trade.trader.engine import MainEngine
+from fcs_trade.trader.ui import MainWindow, create_qapp
 
-from vnpy.gateway.bitmex import BitmexGateway
-from vnpy.gateway.futu import FutuGateway
-from vnpy.gateway.ib import IbGateway
-from vnpy.gateway.ctp import CtpGateway
-# from vnpy.gateway.ctptest import CtptestGateway
-from vnpy.gateway.femas import FemasGateway
-from vnpy.gateway.tiger import TigerGateway
-from vnpy.gateway.oes import OesGateway
-from vnpy.gateway.okex import OkexGateway
-from vnpy.gateway.huobi import HuobiGateway
-from vnpy.gateway.bitfinex import BitfinexGateway
-from vnpy.gateway.onetoken import OnetokenGateway
-from vnpy.gateway.okexf import OkexfGateway
-from vnpy.gateway.xtp import XtpGateway
-from vnpy.gateway.hbdm import HbdmGateway
+from fcs_trade.gateway.bitmex import BitmexGateway
+from fcs_trade.gateway.futu import FutuGateway
+from fcs_trade.gateway.ib import IbGateway
+from fcs_trade.gateway.ctp import CtpGateway
+# from fcs_trade.gateway.ctptest import CtptestGateway
+from fcs_trade.gateway.femas import FemasGateway
+from fcs_trade.gateway.tiger import TigerGateway
+from fcs_trade.gateway.oes import OesGateway
+from fcs_trade.gateway.okex import OkexGateway
+from fcs_trade.gateway.huobi import HuobiGateway
+from fcs_trade.gateway.bitfinex import BitfinexGateway
+from fcs_trade.gateway.onetoken import OnetokenGateway
+from fcs_trade.gateway.okexf import OkexfGateway
+from fcs_trade.gateway.xtp import XtpGateway
+from fcs_trade.gateway.hbdm import HbdmGateway
 
-from vnpy.app.cta_strategy import CtaStrategyApp
-from vnpy.app.csv_loader import CsvLoaderApp
-from vnpy.app.algo_trading import AlgoTradingApp
-from vnpy.app.cta_backtester import CtaBacktesterApp
-from vnpy.app.data_recorder import DataRecorderApp
+from fcs_trade.app.cta_strategy import CtaStrategyApp
+from fcs_trade.app.csv_loader import CsvLoaderApp
+from fcs_trade.app.algo_trading import AlgoTradingApp
+from fcs_trade.app.cta_backtester import CtaBacktesterApp
+from fcs_trade.app.data_recorder import DataRecorderApp
 
 
 def main():
