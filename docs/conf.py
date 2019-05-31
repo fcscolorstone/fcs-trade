@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'fcs_trade'
-copyright = '2019, vn.py Team'
-author = 'vn.py Team'
+copyright = '2019, fcs Team'
+author = 'fcs Team'
 
 # The short X.Y version
 version = '2.0'
