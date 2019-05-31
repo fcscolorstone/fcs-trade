@@ -10,33 +10,33 @@ from fcs_trade.trader.constant import Exchange, Interval
 from fcs_trade.trader.database.database import Driver
 from fcs_trade.trader.object import BarData, TickData
 
-os.environ["VNPY_TESTING"] = "1"
+os.environ["fcs_trade_TESTING"] = "1"
 
 profiles = {Driver.SQLITE: {"driver": "sqlite", "database": "test_db.db"}}
-if "VNPY_TEST_ONLY_SQLITE" not in os.environ:
+if "fcs_trade_TEST_ONLY_SQLITE" not in os.environ:
     profiles.update(
         {
             Driver.MYSQL: {
                 "driver": "mysql",
-                "database": os.environ["VNPY_TEST_MYSQL_DATABASE"],
-                "host": os.environ["VNPY_TEST_MYSQL_HOST"],
-                "port": int(os.environ["VNPY_TEST_MYSQL_PORT"]),
-                "user": os.environ["VNPY_TEST_MYSQL_USER"],
-                "password": os.environ["VNPY_TEST_MYSQL_PASSWORD"],
+                "database": os.environ["fcs_trade_TEST_MYSQL_DATABASE"],
+                "host": os.environ["fcs_trade_TEST_MYSQL_HOST"],
+                "port": int(os.environ["fcs_trade_TEST_MYSQL_PORT"]),
+                "user": os.environ["fcs_trade_TEST_MYSQL_USER"],
+                "password": os.environ["fcs_trade_TEST_MYSQL_PASSWORD"],
             },
             Driver.POSTGRESQL: {
                 "driver": "postgresql",
-                "database": os.environ["VNPY_TEST_POSTGRESQL_DATABASE"],
-                "host": os.environ["VNPY_TEST_POSTGRESQL_HOST"],
-                "port": int(os.environ["VNPY_TEST_POSTGRESQL_PORT"]),
-                "user": os.environ["VNPY_TEST_POSTGRESQL_USER"],
-                "password": os.environ["VNPY_TEST_POSTGRESQL_PASSWORD"],
+                "database": os.environ["fcs_trade_TEST_POSTGRESQL_DATABASE"],
+                "host": os.environ["fcs_trade_TEST_POSTGRESQL_HOST"],
+                "port": int(os.environ["fcs_trade_TEST_POSTGRESQL_PORT"]),
+                "user": os.environ["fcs_trade_TEST_POSTGRESQL_USER"],
+                "password": os.environ["fcs_trade_TEST_POSTGRESQL_PASSWORD"],
             },
             Driver.MONGODB: {
                 "driver": "mongodb",
-                "database": os.environ["VNPY_TEST_MONGODB_DATABASE"],
-                "host": os.environ["VNPY_TEST_MONGODB_HOST"],
-                "port": int(os.environ["VNPY_TEST_MONGODB_PORT"]),
+                "database": os.environ["fcs_trade_TEST_MONGODB_DATABASE"],
+                "host": os.environ["fcs_trade_TEST_MONGODB_HOST"],
+                "port": int(os.environ["fcs_trade_TEST_MONGODB_PORT"]),
                 "user": "",
                 "password": "",
                 "authentication_source": "",
