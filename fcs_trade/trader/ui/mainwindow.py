@@ -80,8 +80,7 @@ class MainWindow(QtWidgets.QMainWindow):
         #    PositionMonitor, "持仓", QtCore.Qt.BottomDockWidgetArea
         #)
 
-        self.tabifyDockWidget(active_dock, order_dock)
-
+        #self.tabifyDockWidget(active_dock, order_dock)
         self.save_window_setting("default")
 
     def init_menu(self):
