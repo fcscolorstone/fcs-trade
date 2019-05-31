@@ -58,7 +58,7 @@ def main():
     #me.addGateway(bigoneGateway)
     #me.addGateway(fcoinGateway)
     #me.addGateway(bitmexGateway)
-    #me.addGateway(huobiGateway)
+    me.add_gateway(HuobiGateway)
     #me.addGateway(okexGateway)
     #me.addGateway(binanceGateway)
     #me.addGateway(bitfinexGateway)
