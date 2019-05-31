@@ -51,7 +51,7 @@ MySQL的例子：
   database.user       | root |
   database.password   | .... |
 
-> vnpy不会主动为关系型数据库创建数据库，所以请确保你所填的database.database字段对应的数据库已经创建好了  
+> fcs_trade不会主动为关系型数据库创建数据库，所以请确保你所填的database.database字段对应的数据库已经创建好了  
 > 若未创建数据库，请手动连上数据库并运行该命令：```create database <你填的database.database>;```   
 
 ---

@@ -1,6 +1,6 @@
 # CSV载入模块
 
-CSV载入模块在vnpy根目录下vnpy\app\csv_loader文件夹内，engine.py里面的CsvLoaderEngine类负责载入功能实现。
+CSV载入模块在vnpy根目录下fcs_trade\app\csv_loader文件夹内，engine.py里面的CsvLoaderEngine类负责载入功能实现。
 
 ## 初始化配置
 初始化数据载入相关信息，可以分成3类：

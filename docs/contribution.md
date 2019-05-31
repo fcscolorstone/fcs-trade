@@ -2,7 +2,7 @@
 
 ---
 ## 创建PR
-我们欢迎任何人贡献代码到vn.py。  
+我们欢迎任何人贡献代码到fcs trade。  
 如果希望贡献代码请使用github的PR(Pull Request)的流程。
 
 PR流程大致如下：
@@ -45,7 +45,7 @@ PR流程大致如下：
 
 例如：
 ```python
-DEFAULT_PATH = "/tmp/vn.py/"
+DEFAULT_PATH = "/tmp/fcs.py/"
 class ClassA:
     def __init__(self, arg_one: int, arg_two: str):
         if arg_two is None:
@@ -67,8 +67,8 @@ autopep8 --in-place --recursive .
 使用[flake8](https://pypi.org/project/flake8/)检查你的代码，确保没有error和warning。
 在项目根目录下运行```flake8```就可以检查出代码中书写不严谨的地方了。如果检查出error或者warning，说明你的代码需要进行一些修改以提升质量。
 
-[GithubVnpy]:https://github.com/vnpy/vnpy
+[GithubVnpy]:https://github.com/fcscolorstone/fcs-trade
 [GithubDocForSync]:https://help.github.com/articles/syncing-a-fork/
-[CreateIssue]:https://github.com/vnpy/vnpy/issues/new
-[CreatePR]:https://github.com/vnpy/vnpy/compare?expand=1
+[CreateIssue]:https://github.com/vfcscolorstone/fcs-trade/issues/new
+[CreatePR]:https://github.com/fcscolorstone/fcs-trade/compare?expand=1
 

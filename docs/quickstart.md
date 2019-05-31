@@ -40,7 +40,7 @@ python run.py
 
 此时行情组件会显示最新行情信息；交易组件会显示合约名称，并且在下方显示深度行情报价：如最新价、买一价、卖一价。（数字货币品种可以显示十档行情）
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/subcribe_contract.png "enter image title here")
+
 
 
 
@@ -64,7 +64,7 @@ python run.py
 
 数据监控由以下组件构成，并且附带2个辅助功能：选定以下任一组件，鼠标右键可以选择“调整列宽”（特别适用于屏幕分辨率较低），或者选择“保存数据”（csv格式）
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/2_optiones.png "enter image title here")
+
 
 
 ### 行情组件
@@ -76,27 +76,27 @@ python run.py
 
 - 其他信息：数据推送时间、接口
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/subcribe_contract_module.png "enter image title here")
+
 
 
 ### 活动组件
 活动组件用于存放还未成交的委托，如限价单或者没有立刻成交的市价单，委托状态永远是“提交中”。在该组件中鼠标双击任一委托可以完成撤单操作。
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/active_order.png "enter image title here")
+
 
 ### 成交组件
 成交组件用于存放已成交的委托，需要注意3个字段信息：价格、数量、时间。他们都是交易所推送过来的成交信息，而不是委托信息。
 
 注意：有些接口会独立推送成交信息，如CTP接口；有些接口则需要从委托信息里面提取成交相关字段，如Tiger接口。
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/trade.png "enter image title here")
+
 
 
 
 ### 委托组件
 委托组件用于存放用户发出的所有委托信息，其委托状态可以是提交中、已撤销、部分成交、全部成交、拒单等等。
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/order.png "enter image title here")
+
 
 
 ### 持仓组件
@@ -109,7 +109,7 @@ python run.py
   
 若平仓离场，持仓数量清零，浮动盈亏变成实际盈亏从而影响账号余额变化。故以下字段：数量、昨仓、冻结、均价、盈亏均为“0”，如下图。
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/query_position.png "enter image title here")
+
 
 ### 资金组件
 资金组件显示了账号的基础信息，如下图需要注意3个字段信息：
@@ -119,14 +119,14 @@ python run.py
 
 注意：若全部平仓，浮动盈亏变成实际盈亏，保证金和浮动盈亏清零，总资金等于可用资金
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/query_account.png "enter image title here")
+
 
 
 
 ### 日志组件
 日志组件用于显示接口登陆信息以及委托报错信息，如下图。
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/write_log.png "enter image title here")
+
 
 
 
@@ -136,5 +136,5 @@ python run.py
 
 vn.py官方提供了开箱即用的量化交易应用模块，在菜单栏中点击“功能”，即显示应用模块，如下图：
 
-![](https://vnpy-community.oss-cn-shanghai.aliyuncs.com/forum_experience/yazhang/quick_start/application.png "enter image title here")
+
 
