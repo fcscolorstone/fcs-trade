@@ -22,6 +22,8 @@ from fcs_trade.trader.gateway import BaseGateway
 from fcs_trade.trader.object import (
     TickData,
     OrderData,
+    LogData,
+    DealData,
     TradeData,
     AccountData,
     ContractData,
@@ -29,6 +31,7 @@ from fcs_trade.trader.object import (
     CancelRequest,
     SubscribeRequest
 )
+from fcs_trade.trader.utility import getJsonPath
 from fcs_trade.trader.event import EVENT_TIMER
 #from threading import Thread
 
@@ -37,32 +40,32 @@ REST_HOST = 'https://api.IDCM.cc:8323'
 EXCHANGE_IDCM = "IDCM"
 
 # 内外盘
-dealStatusMap = {}
-dealStatusMap[TRADED_BUY] = 2   # 外盘
-dealStatusMap[TRADED_SELL] = 1  # 内盘
+#dealStatusMap = {}
+#dealStatusMap[TRADED_BUY] = 2   # 外盘
+#dealStatusMap[TRADED_SELL] = 1  # 内盘
 
 # 委托状态类型映射
-orderStatusMap = {}
-orderStatusMap[STATUS_CANCELLED] = -2
-orderStatusMap[STATUS_NOTVALID] = -1
-orderStatusMap[STATUS_NOTTRADED] = 0
-orderStatusMap[STATUS_PARTTRADED] = 1
-orderStatusMap[STATUS_ALLTRADED] = 2
-orderStatusMap[STATUS_ORDERED] = 3
+#orderStatusMap = {}
+#orderStatusMap[STATUS_CANCELLED] = -2
+#orderStatusMap[STATUS_NOTVALID] = -1
+#orderStatusMap[STATUS_NOTTRADED] = 0
+#orderStatusMap[STATUS_PARTTRADED] = 1
+#orderStatusMap[STATUS_ALLTRADED] = 2
+#orderStatusMap[STATUS_ORDERED] = 3
 
 # 方向和订单类型映射
-directionMap = {}
-directionMap[(DIRECTION_BUY)] = 0
-directionMap[(DIRECTION_SELL)] = 1
+#directionMap = {}
+#directionMap[(DIRECTION_BUY)] = 0
+#directionMap[(DIRECTION_SELL)] = 1
 
-orderTypeMap = {}
-orderTypeMap[(PRICETYPE_MARKETPRICE)] = 0
-orderTypeMap[(PRICETYPE_LIMITPRICE)] = 1
+#orderTypeMap = {}
+#orderTypeMap[(PRICETYPE_MARKETPRICE)] = 0
+#orderTypeMap[(PRICETYPE_LIMITPRICE)] = 1
 
-dealStatusMapReverse = {v: k for k, v in dealStatusMap.items()}
-orderStatusMapReverse = {v: k for k, v in orderStatusMap.items()}
-directionMapReverse = {v: k for k, v in directionMap.items()}
-orderTypeMapReverse = {v: k for k, v in orderTypeMap.items()}
+#dealStatusMapReverse = {v: k for k, v in dealStatusMap.items()}
+#orderStatusMapReverse = {v: k for k, v in orderStatusMap.items()}
+#directionMapReverse = {v: k for k, v in directionMap.items()}
+#orderTypeMapReverse = {v: k for k, v in orderTypeMap.items()}
 
 #错误码对应表
 errMsgMap = {}
@@ -113,9 +116,9 @@ class IdcmGateway(BaseGateway):
     """IDCM接口"""
 
     # ----------------------------------------------------------------------
-    def __init__(self, eventEngine, gatewayName=''):
+    def __init__(self, event_engine):
         """Constructor"""
-        super().__init__(eventEngine, gatewayName)
+        super().__init__(event_engine, 'IDCM')
         self.localID = 10000
 
         self.accountDict = {}
@@ -125,10 +128,10 @@ class IdcmGateway(BaseGateway):
 
         self.qryEnabled = False         # 是否要启动循环查询
 
-        self.restApi = IdcmRestApi(self)
+        #self.restApi = IdcmRestApi(self)
         self.wsApi = WebsocketApi(self)
 
-        self.fileName = 'GatewayConfig/' + self.gatewayName + '_connect.json'
+        self.fileName = 'GatewayConfig/' + self.gateway_name + '_connect.json'
         self.filePath = getJsonPath(self.fileName, __file__)
         #symbols_filepath = os.getcwd() + '\GatewayConfig' + '/' + self.fileName
 
@@ -138,7 +141,7 @@ class IdcmGateway(BaseGateway):
             f = open(self.filePath)
         except IOError:
             log = LogData()
-            log.gatewayName = self.gatewayName
+            log.gateway_name = self.gateway_name
             log.logContent = '读取连接配置出错，请检查'
             self.onLog(log)
             return
@@ -153,7 +156,7 @@ class IdcmGateway(BaseGateway):
             symbols = setting['symbols']
         except KeyError:
             log = LogData()
-            log.gatewayName = self.gatewayName
+            log.gateway_name = self.gateway_name
             log.logContent = '连接配置缺少字段，请检查'
             self.onLog(log)
             return
@@ -178,14 +181,20 @@ class IdcmGateway(BaseGateway):
         self.wsApi.subscribe(subscribeReq)
 
     # ----------------------------------------------------------------------
-    def sendOrder(self, orderReq):
+    def send_order(self, orderReq):
         """发单"""
         self.restApi.sendOrder(orderReq)
 
     # ----------------------------------------------------------------------
-    def cancelOrder(self, cancelOrderReq):
+    def cancel_order(self, cancelOrderReq):
         """撤单"""
         self.restApi.cancelOrder(cancelOrderReq)
+
+    def query_account(self):
+        pass
+
+    def query_position(self):
+        pass
 
     def cancelAllOrders(self):
         """全部撤单"""
@@ -231,18 +240,12 @@ class IdcmGateway(BaseGateway):
     # ----------------------------------------------------------------------
     def startQuery(self):
         """启动连续查询"""
-        self.eventEngine.register(EVENT_TIMER, self.query)
+        self.event_engine.register(EVENT_TIMER, self.query)
 
     # ----------------------------------------------------------------------
     def setQryEnabled(self, qryEnabled):
         """设置是否要启动循环查询"""
         self.qryEnabled = qryEnabled
-
-    # ----------------------------------------------------------------------
-    def queryInfo(self):
-        """"""
-        self.restApi.queryAccount()
-        #self.restApi.queryPosition()
 
     def processQueueOrder(self, data, historyFlag):
         for d in data['data']:
@@ -250,15 +253,15 @@ class IdcmGateway(BaseGateway):
             # localID = str(self.gateway.localID)
 
             order = OrderData()
-            order.gatewayName = self.gatewayName
+            order.gateway_name = self.gateway_name
 
             order.symbol = d['symbol']
             order.exchange = 'IDCM'
             order.vtSymbol = '.'.join([order.exchange, order.symbol])
 
             order.orderID = d['orderid']
-            # order.vtOrderID = '.'.join([self.gatewayName, localID])
-            order.vtOrderID = '.'.join([self.gatewayName, order.orderID])
+            # order.vtOrderID = '.'.join([self.gateway_name, localID])
+            order.vtOrderID = '.'.join([self.gateway_name, order.orderID])
 
             #order.price = float(d['price'])  # 委托价格
             order.price = float(d['price'])  # 委托价格
@@ -273,7 +276,7 @@ class IdcmGateway(BaseGateway):
             order.orderTime = dt.strftime('%Y-%m-%d %H:%M:%S')
 
             if order.status == STATUS_ALLTRADED:
-                # order.vtTradeID =  '.'.join([self.gatewayName, order.orderID])
+                # order.vtTradeID =  '.'.join([self.gateway_name, order.orderID])
                 if historyFlag:
                     self.onTrade(order)
                 else:
@@ -285,11 +288,11 @@ class IdcmGateway(BaseGateway):
         """"""
         log = LogData()
         log.logContent = msg
-        log.gatewayName = self.gatewayName
+        log.gateway_name = self.gateway_name
 
         event = Event(EVENT_LOG)
         event.dict_['data'] = log
-        self.eventEngine.put(event)
+        self.event_engine.put(event)
 
 
 class WebsocketApi(WebsocketClient):
@@ -298,7 +301,7 @@ class WebsocketApi(WebsocketClient):
         super().__init__()
 
         self.gateway = gateway
-        self.gatewayName = gateway.gatewayName
+        self.gateway_name = gateway.gateway_name
 
         self.apiKey = ''
         self.secretKey = ''
@@ -334,7 +337,7 @@ class WebsocketApi(WebsocketClient):
     def subscribeMarketData(self, symbol):
         # 订阅行情
         tick = TickData()
-        tick.gatewayName = self.gatewayName
+        tick.gateway_name = self.gateway_name
         tick.symbol = symbol
         tick.exchange = "IDCM"
         tick.vtSymbol = '.'.join([tick.symbol, tick.exchange])
@@ -414,14 +417,14 @@ class WebsocketApi(WebsocketClient):
             #l.append('ticker.' + symbol)
             #l.append('depth.L20.' + symbol)
             tick = TickData()
-            tick.gatewayName = self.gatewayName
+            tick.gateway_name = self.gateway_name
             tick.symbol = symbol
             tick.exchange = EXCHANGE_IDCM
             tick.vtSymbol = '.'.join([tick.exchange, tick.symbol])
             self.tickDict[symbol] = tick
 
             deal = DealData()
-            deal.gatewayName = self.gatewayName
+            deal.gateway_name = self.gateway_name
             deal.symbol = symbol
             deal.exchange = EXCHANGE_IDCM
             deal.vtSymbol = '.'.join([deal.exchange, deal.symbol])
