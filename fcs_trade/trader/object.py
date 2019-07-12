@@ -166,6 +166,26 @@ class TradeData(BaseData):
         self.vt_tradeid = f"{self.gateway_name}.{self.tradeid}"
 
 
+class DealData(BaseData):
+    """成交回报数据类"""
+    # ----------------------------------------------------------------------
+    def __init__(self):
+        """Constructor"""
+        super(DealData, self).__init__()
+
+        # 代码相关
+        self.symbol = EMPTY_STRING  # 合约代码
+        self.exchange = EMPTY_STRING  # 交易所代码
+        self.vtSymbol = EMPTY_STRING  # 合约在vt系统中的唯一代码，通常是 合约代码.交易所代码
+
+        # 成交数据
+        self.price = EMPTY_FLOAT  # 成交价
+        self.volume = EMPTY_INT  # 成交量
+        self.time = EMPTY_STRING  # 时间 11:20:56.5
+        self.date = EMPTY_STRING  # 日期 20151009
+        self.datetime = None  # python的datetime时间对象
+
+
 @dataclass
 class PositionData(BaseData):
     """
@@ -328,3 +348,5 @@ class HistoryRequest:
     def __post_init__(self):
         """"""
         self.vt_symbol = f"{self.symbol}.{self.exchange.value}"
+
+
