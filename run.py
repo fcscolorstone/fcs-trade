@@ -6,6 +6,7 @@
 #except NameError:  # Python 3
 #    from importlib import reload
 import sys
+import datetime
 #reload(sys)
 #sys.setdefaultencoding('utf8')
 
@@ -16,6 +17,7 @@ from fcs_trade.trader.ui import create_qapp
 
 # 加载底层接口
 from fcs_trade.gateway.huobi import HuobiGateway
+from fcs_trade.gateway.idcm import IdcmGateway
 #, okexGateway, okexfGateway,
                                  #binanceGateway, bitfinexGateway,
                                  #bitmexGateway, fcoinGateway,
@@ -58,6 +60,7 @@ def main():
     #me.addGateway(bigoneGateway)
     #me.addGateway(fcoinGateway)
     #me.addGateway(bitmexGateway)
+    me.add_gateway(IdcmGateway)
     me.add_gateway(HuobiGateway)
     #me.addGateway(okexGateway)
     #me.addGateway(binanceGateway)
