@@ -114,7 +114,6 @@ def getErrMsg(errcode):
 
 class IdcmGateway(BaseGateway):
     """IDCM接口"""
-
     # ----------------------------------------------------------------------
     def __init__(self, event_engine):
         """Constructor"""
@@ -167,6 +166,7 @@ class IdcmGateway(BaseGateway):
         except Exception as e:
             print(e)
             print('restapi')
+
         try:
             self.wsApi.connect(apiKey, secretKey, symbols)
         except Exception as e:
