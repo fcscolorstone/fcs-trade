@@ -203,8 +203,8 @@ class IdcmGateway(BaseGateway):
     # ----------------------------------------------------------------------
     def close(self):
         """关闭"""
-        self.restApi.stop()
-        self.wsApi.close()
+        #self.restApi.stop()
+        self.wsApi.stop()
 
     # ----------------------------------------------------------------------
     def initQuery(self):
