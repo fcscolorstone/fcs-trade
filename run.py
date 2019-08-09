@@ -66,8 +66,6 @@ def main():
     #me.addGateway(binanceGateway)
     #me.addGateway(bitfinexGateway)
 
-    #me.addGateway(idcmGateway)
-
     # 添加上层应用
 #    me.addApp(algoTrading)
     #me.addApp(riskManager)
