@@ -66,14 +66,6 @@ def main():
     #me.addGateway(binanceGateway)
     #me.addGateway(bitfinexGateway)
 
-    # 添加上层应用
-#    me.addApp(algoTrading)
-    #me.addApp(riskManager)
-#    me.addApp(dataRecorder)
-#    me.addApp(optionMaster)
-    #me.addApp(rpcService)
-#    me.addApp(rtdService)
-#    me.addApp(spreadTrading)
 
     # 创建主窗口
     mw = MainWindow(me, ee)
