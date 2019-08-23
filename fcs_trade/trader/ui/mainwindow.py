@@ -137,7 +137,7 @@ class MainWindow(QtWidgets.QMainWindow):
         )
 
         self.add_menu_action(
-            help_menu, "社区论坛", "forum.ico", self.open_forum
+            help_menu, "官网", "forum.ico", self.open_forum
         )
 
         self.add_menu_action(
@@ -261,7 +261,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def open_forum(self):
         """
         """
-        webbrowser.open("https://www.fcs_trade.com/forum/")
+        webbrowser.open("http://fcs.one/")
 
     def edit_global_setting(self):
         """
