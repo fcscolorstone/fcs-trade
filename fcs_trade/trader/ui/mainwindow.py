@@ -132,9 +132,9 @@ class MainWindow(QtWidgets.QMainWindow):
             help_menu, "还原窗口", "restore.ico", self.restore_window_setting
         )
 
-        self.add_menu_action(
-            help_menu, "测试邮件", "email.ico", self.send_test_email
-        )
+        #self.add_menu_action(
+        #    help_menu, "测试邮件", "email.ico", self.send_test_email
+        #)
 
         self.add_menu_action(
             help_menu, "官网", "forum.ico", self.open_forum
