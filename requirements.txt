@@ -5,7 +5,6 @@ qdarkstyle
 requests
 websocket-client
 peewee
-pymysql
 psycopg2
 mongoengine
 numpy
