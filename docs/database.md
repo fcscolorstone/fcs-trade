@@ -1,6 +1,6 @@
 # 数据库配置
 
-VN Trader目前支持以下四种数据库：  
+fcs-trade目前支持以下四种数据库：  
 
  * [SQLite](#sqlite)（默认）
  * [MySQL](#sqlmysqlpostgresql)
