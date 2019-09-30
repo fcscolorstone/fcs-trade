@@ -994,7 +994,7 @@ class AboutDialog(QtWidgets.QDialog):
             License：MIT
             
             Website：http://fcs.one/
-            Github：https://github.com/fcscolorstone/fcs-trade
+            Github：https://github.com/fcscolorstone/FCS
 
             """
 
